@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable} from 'rxjs/Observable';
 
-import { PostService } from '../services/index';
+import { PostService } from '../services';
 
 @Component({
   selector: 'app-reddit',
@@ -9,12 +9,11 @@ import { PostService } from '../services/index';
   styleUrls: ['./reddit.component.less']
 })
 export class RedditComponent implements OnInit {
-  posts;
+  posts: any[] = [];
 
   constructor(private postService: PostService) { }
 
   ngOnInit() {
-    this.posts = [];
     const observer = {
       next: () => {
         this.posts = this.postService.getPosts();

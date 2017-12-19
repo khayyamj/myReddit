@@ -10,18 +10,18 @@ export class PostService {
     url = 'https://www.reddit.com/r/programming/.json';
 
     constructor(private http: HttpClient) {
-        this.setPosts().subscribe(response => {
-            this.posts = response.data.children;
-            console.log(this.posts.map(post => post.data));
-            this.hasLoaded = true;
-        });
+        this.setPosts();
     }
 
-    setPosts(): Observable<Object> {
-        return this.http.get(this.url);
+    setPosts() {
+        this.http.get(this.url)
+            .subscribe(response => {
+                this.posts = response['data'].children.map(postData => postData.data);
+                this.hasLoaded = true;
+            });
     }
 
     getPosts() {
-        return this.posts.map(postData => postData.data);
+        return this.posts;
     }
 }
