@@ -1,3 +1,13 @@
-<p>
-  reddit works!
-</p>
+<mat-list class="post-list-container">
+  <div *ngFor="let post of posts; let i = index" class="post-item">
+    <mat-list-item fxFlex fxlayout="row" fxLayoutAlign="start center">
+      <p class="post-index">{{i+1}}</p>
+      <img src="" class="thumbnail-image" />
+      <div fxLlayout="column">
+        <a href="{{post.url}}">{{post.title}}</a>
+        <p class="post-details">from {{post.domain}} by {{post.name}} to reddit on {{post.created}}</p>
+      </div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+  </div>
+</mat-list>

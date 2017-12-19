@@ -27,9 +27,15 @@
     minimist "^1.2.0"
     rxjs "^5.5.2"
 
-"@angular/animations@^5.0.0":
+"@angular/animations@^5.1.1":
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-5.1.1.tgz#007621f8bcac15560e160582eb2e91025b6b9106"
+  dependencies:
+    tslib "^1.7.1"
+
+"@angular/cdk@^5.0.1":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-5.0.1.tgz#c85e662fe2e1c58abde1dea0f0f18cdfcffc2066"
   dependencies:
     tslib "^1.7.1"
 
@@ -96,7 +102,7 @@
   optionalDependencies:
     node-sass "^4.3.0"
 
-"@angular/common@^5.0.0":
+"@angular/common@^5.1.1":
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/@angular/common/-/common-5.1.1.tgz#b6444cf6508f9b0b5fc4c9b3107b3e37be1336c9"
   dependencies:
@@ -117,13 +123,17 @@
   dependencies:
     tslib "^1.7.1"
 
-"@angular/core@^5.0.0":
+"@angular/core@^5.1.1":
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/@angular/core/-/core-5.1.1.tgz#b6a6e2b2284f86279f096d857253f6643098d908"
   dependencies:
     tslib "^1.7.1"
 
-"@angular/forms@^5.0.0":
+"@angular/flex-layout@^2.0.0-beta.12":
+  version "2.0.0-rc.1"
+  resolved "https://registry.yarnpkg.com/@angular/flex-layout/-/flex-layout-2.0.0-rc.1.tgz#96fa7f85b2c4bacf2784913a2d607e2ed23dc7f1"
+
+"@angular/forms@^5.1.1":
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-5.1.1.tgz#e38858a44e7b57b61f375087b76a79d6e2679b14"
   dependencies:
@@ -139,13 +149,19 @@
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-5.1.1.tgz#731533a3b6ee4c8facda862a836db1930a011f07"
 
+"@angular/material@^5.0.1":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@angular/material/-/material-5.0.1.tgz#73ff8af76daf7c7ec56092a613637b21deb5d00e"
+  dependencies:
+    tslib "^1.7.1"
+
 "@angular/platform-browser-dynamic@^5.0.0":
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-5.1.1.tgz#4b7bd1cbdb3c93fdeb626b38fbd54286a73a76d0"
   dependencies:
     tslib "^1.7.1"
 
-"@angular/platform-browser@^5.0.0":
+"@angular/platform-browser@^5.1.1":
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-5.1.1.tgz#88a05132d822b760c9108a3eaf0da610f39c2ed9"
   dependencies:
@@ -4804,7 +4820,7 @@ run-queue@^1.0.0, run-queue@^1.0.3:
   dependencies:
     aproba "^1.1.1"
 
-rxjs@^5.5.2:
+rxjs@^5.5.2, rxjs@^5.5.5:
   version "5.5.5"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.5.5.tgz#e164f11d38eaf29f56f08c3447f74ff02dd84e97"
   dependencies:
@@ -6122,6 +6138,6 @@ yn@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/yn/-/yn-2.0.0.tgz#e5adabc8acf408f6385fc76495684c88e6af689a"
 
-zone.js@^0.8.14:
+zone.js@^0.8.14, zone.js@^0.8.18:
   version "0.8.18"
   resolved "https://registry.yarnpkg.com/zone.js/-/zone.js-0.8.18.tgz#8cecb3977fcd1b3090562ff4570e2847e752b48d"
