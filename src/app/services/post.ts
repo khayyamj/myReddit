@@ -16,7 +16,6 @@ export class PostService {
             this.hasLoaded = true;
         });
     }
-)
 
     setPosts(): Observable<Object> {
         return this.http.get(this.url);

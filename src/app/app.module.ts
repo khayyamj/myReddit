@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule, MatListModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
 import { RedditComponent } from './reddit/reddit.component';
@@ -14,6 +15,7 @@ import { PostService } from './services/post';
   ],
   imports: [
     BrowserModule,
+    FlexLayoutModule,
     HttpClientModule,
     MatCardModule,
     MatListModule,
@@ -21,10 +23,6 @@ import { PostService } from './services/post';
   providers: [
     PostService,
   ],
-  // export: [
-  //   MatCardModule,
-  //   MatListModule,
-  // ],
   bootstrap: [AppComponent]
 })
 
