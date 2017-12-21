@@ -5,15 +5,15 @@
       <div fxLayout="row" fxLayoutAlign="space-between center">
         <p class="post-index"></p>
         <div fxLlayout="column" class="post-body">
-          <p class="post-additional-details" (click)="onSort('title')">Title</p>
+          <p class="post-additional-details clickable" (click)="onSort('title')">Title</p>
         </div>
       </div>
 
       <div fxLayout="row">
-        <div fxLlayout="column" class="post-additional-details" (click)="onSort('num_comments')">
+        <div fxLlayout="column" class="post-additional-details clickable" (click)="onSort('num_comments')">
           <p>Comments</p>
         </div>
-        <div fxLlayout="column" class="post-additional-details" (click)="onSort('score')">
+        <div fxLlayout="column" class="post-additional-details clickable" (click)="onSort('score')">
           <p>Score</p>
         </div>
         <div class="spacer">.</div>

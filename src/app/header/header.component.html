@@ -8,7 +8,10 @@
 
   <div class="right-side" fxLayout="row">
     <div class="search-bar">
-      <input type='text' placeholder="Search" class="search-bar-style" />
+      <form #searchForm="ngForm" (ngSubmit)="onSearch(searchForm)">
+      <input type='text'name="searchTerm" placeholder="Search" class="search-bar-style" (keyup)="onSearch($event)" [(ngModel)]="searchTerm" />
+      <button><mat-icon name="search"></mat-icon></button>
+      </form>
     </div>
     <div class="header-button" [routerLink]="['/login']">Login</div>
   </div>

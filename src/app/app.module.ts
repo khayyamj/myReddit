@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule, MatCardModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatListModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { RedditComponent } from './reddit/reddit.component';
@@ -36,6 +36,7 @@ import { HomeComponent } from './home/home.component';
     MatIconModule,
     MatListModule,
     AppRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
   ],
   providers: [

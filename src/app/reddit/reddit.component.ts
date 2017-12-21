@@ -11,6 +11,7 @@ import { PostService } from '../services';
 export class RedditComponent implements OnInit {
   allPosts: any[] = [];
   posts: any[] = [];
+  searchTerm: string;
 
   constructor(private postService: PostService) { }
 
@@ -18,6 +19,7 @@ export class RedditComponent implements OnInit {
     const observer = {
       next: () => {
         this.allPosts = this.postService.getPosts();
+        this.onSort();
       },
       error: (err) => console.error(err),
       complete: () => null
@@ -36,10 +38,23 @@ export class RedditComponent implements OnInit {
       checkForPostData();
     });
     getPostData.subscribe(observer);
+    this.postService.getFilterString().subscribe((term: string) => this.searchPosts(term));
   }
 
-  onSort(category: string) {
-    this.posts = this.allPosts.sort((a, b) => a[category] > b[category]);
+  onSort(category: string = 'title') {
+    this.posts = this.allPosts.sort((a, b) => b[category] - a[category]);
+  }
+
+  searchPosts(term: string) {
+    this.posts = this.allPosts;
+    if (term === '') { return; }
+    this.posts = this.allPosts.filter(post => {
+      let containsTerm = false;
+      if (post['title'].toLowerCase().indexOf(term.toLowerCase()) > -1) { containsTerm = true; }
+      if (post['num_comments'].toString().indexOf(term) > -1) { containsTerm = true; }
+      if (post['score'].toString().indexOf(term) > -1) {containsTerm = true; }
+      return containsTerm;
+    });
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink, ActivatedRoute } from '@angular/router';
+import { PostService } from '../services/index';
 
 @Component({
   selector: 'app-header',
@@ -8,9 +9,15 @@ import { RouterLink, ActivatedRoute } from '@angular/router';
 })
 export class HeaderComponent {
   currentPath = 'home';
+  searchTerm: string;
+
+  constructor(private postService: PostService) {}
 
   onSetPath(currentPath: string) {
     this.currentPath = currentPath;
-    console.log('current path: ', this.currentPath);
+  }
+
+  onSearch(event: Event) {
+    this.postService.setFilterString(this.searchTerm);
   }
 }
