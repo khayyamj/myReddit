@@ -1,7 +1,11 @@
+import { Subject } from 'rxjs/Subject';
 import { Component, OnInit } from '@angular/core';
 import { Observable} from 'rxjs/Observable';
+import { MatDialog, MatDialogRef } from '@angular/material';
+
 
 import { PostService } from '../services';
+import { PostComponent } from '../post/post.component';
 
 @Component({
   selector: 'app-reddit',
@@ -13,7 +17,8 @@ export class RedditComponent implements OnInit {
   posts: any[] = [];
   searchTerm: string;
 
-  constructor(private postService: PostService) { }
+  constructor(private postService: PostService,
+              public dialog: MatDialog) { }
 
   ngOnInit() {
     const observer = {
@@ -54,6 +59,18 @@ export class RedditComponent implements OnInit {
       if (post['num_comments'].toString().indexOf(term) > -1) { containsTerm = true; }
       if (post['score'].toString().indexOf(term) > -1) {containsTerm = true; }
       return containsTerm;
+    });
+  }
+
+  onSelectPost(index: number) {
+    console.log('selected post #', index);
+    const dialogRef = this.dialog.open(PostComponent, {
+      width: '450px',
+      data: {post: this.posts[index]}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('the dialog was closed');
     });
   }
 

@@ -22,7 +22,7 @@
     </div>
   </div>
 
-  <div *ngFor="let post of posts; let i = index" class="post-item">
+  <div *ngFor="let post of posts; let i = index" class="post-item" (click)="onSelectPost(i)">
     <div fxLayout="row" fxLayoutAlign="space-between center">
 
       <div fxLayout="row" fxLayoutAlign="space-between center">

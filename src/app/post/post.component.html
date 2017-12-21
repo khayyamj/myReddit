@@ -1,3 +1,6 @@
-<p>
-  post works!
-</p>
+<div class="post-container" fxLayout="column" fxLayoutAlign="center center">
+	<h1>{{post.title}}</h1>
+	<p>{{post.subreddit.toUpperCase()}} - {{post.created | date}}</p>
+	<h2><a href="{{post.url}}" target="_blank">{{post.url}}</a></h2>
+	<p>{{post.score}} votes and {{post.num_comments}} comments</p>
+</div>

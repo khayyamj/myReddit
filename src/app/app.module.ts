@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule, MatCardModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatListModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { RedditComponent } from './reddit/reddit.component';
@@ -27,6 +28,7 @@ import { HomeComponent } from './home/home.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FlexLayoutModule,
     HttpClientModule,
     MatButtonModule,
