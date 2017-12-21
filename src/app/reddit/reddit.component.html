@@ -1,4 +1,27 @@
 <div class="post-list-container">
+  <div class="post-list-header">
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+  
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <p class="post-index"></p>
+        <div fxLlayout="column" class="post-body">
+          <p class="post-additional-details" (click)="onSort('title')">Title</p>
+        </div>
+      </div>
+
+      <div fxLayout="row">
+        <div fxLlayout="column" class="post-additional-details" (click)="onSort('num_comments')">
+          <p>Comments</p>
+        </div>
+        <div fxLlayout="column" class="post-additional-details" (click)="onSort('score')">
+          <p>Score</p>
+        </div>
+        <div class="spacer">.</div>
+      </div>
+  
+    </div>
+  </div>
+
   <div *ngFor="let post of posts; let i = index" class="post-item">
     <div fxLayout="row" fxLayoutAlign="space-between center">
 
@@ -6,17 +29,15 @@
         <p class="post-index">{{i+1}}</p>
         <div fxLlayout="column" class="post-body">
           <a href="{{post.url}}" target="_blank" class="title-text">{{post.title}}</a>
-          <p class="post-details">from <a href="{{post.domain}}" target="_blank" class="post-text">{{post.domain}}</a> by <span class="post-text">{{post.author}}</span> to reddit on {{post.created | date}}.</p>
+          <!-- <p class="post-details">from <a href="{{post.domain}}" target="_blank" class="post-text">{{post.domain}}</a> by <span class="post-text">{{post.author}}</span> to reddit on {{post.created | date}}.</p> -->
         </div>
       </div>
 
       <div fxLayout="row">
         <div fxLlayout="column" class="post-additional-details">
-          <p>Comments</p>
           <p>{{post.num_comments}}</p>
         </div>
         <div fxLlayout="column" class="post-additional-details">
-          <p>Score</p>
           <p>{{post.score}}</p>
         </div>
       </div>

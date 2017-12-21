@@ -9,6 +9,7 @@ import { PostService } from '../services';
   styleUrls: ['./reddit.component.less']
 })
 export class RedditComponent implements OnInit {
+  allPosts: any[] = [];
   posts: any[] = [];
 
   constructor(private postService: PostService) { }
@@ -16,7 +17,7 @@ export class RedditComponent implements OnInit {
   ngOnInit() {
     const observer = {
       next: () => {
-        this.posts = this.postService.getPosts();
+        this.allPosts = this.postService.getPosts();
       },
       error: (err) => console.error(err),
       complete: () => null
@@ -35,6 +36,10 @@ export class RedditComponent implements OnInit {
       checkForPostData();
     });
     getPostData.subscribe(observer);
+  }
+
+  onSort(category: string) {
+    this.posts = this.allPosts.sort((a, b) => a[category] > b[category]);
   }
 
 }

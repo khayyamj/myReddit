@@ -1,8 +1,24 @@
+@backgroundColor: white;
+
 .post-list-container{
     width: 70%;
     min-width: 600px;
     margin: 0 15%;
     font-size: 16px;
+
+    .post-list-header {
+        position: sticky;
+        top: 50px;
+        width: 101%;
+        background-color: @backgroundColor;
+        margin: 0 1px;
+
+        .spacer {
+            width: 1%;
+            color: @backgroundColor;
+            padding-left: 6px;
+        }
+    }
 
     a{
         text-decoration: none;
@@ -31,6 +47,7 @@
     }
 
     .post-item{
+        width: 100%;
         padding: 20px 0;
         box-shadow: 1px 1px 2px grey;
         margin: 5px 0;
