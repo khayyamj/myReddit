@@ -21,7 +21,6 @@ export class PostService {
         this.http.get(this.url)
             .subscribe(response => {
                 this.posts = response['data'].children.map(postData => postData.data);
-                // console.log(this.posts);
                 this.hasLoaded = true;
             });
     }

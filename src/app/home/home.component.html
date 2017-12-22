@@ -2,4 +2,10 @@
   <h1>Welcome to Reddit!</h1>
   <p>for</p>
   <img class="company-image" src="../assets/images/circlepix-full-logo.png" />
+  <div *ngIf="!authService.authenticated">
+    <button mat-raised-button type="button" (click)="onGoToLogin()" color="primary">Login</button>
+  </div>
+  <div *ngIf="authService.authenticated">
+    <button mat-raised-button type="button" (click)="onGoToPosts()" color="primary">Go To Posts</button>
+  </div>
 </div>

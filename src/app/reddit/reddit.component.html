@@ -1,20 +1,21 @@
 <div class="post-list-container">
+  <mat-spinner *ngIf="!loaded" class="loading-spinner"></mat-spinner>
   <div class="post-list-header">
     <div fxLayout="row" fxLayoutAlign="space-between center">
   
       <div fxLayout="row" fxLayoutAlign="space-between center">
-        <p class="post-index"></p>
+        <p class="post-index pull-left">Sort:</p>
         <div fxLlayout="column" class="post-body">
-          <p class="post-additional-details clickable" (click)="onSort('title')">Title</p>
+          <button mat-button class="post-additional-details pull-left clickable" (click)="onSort('title')">Title</button>
         </div>
       </div>
 
       <div fxLayout="row">
-        <div fxLlayout="column" class="post-additional-details clickable" (click)="onSort('num_comments')">
-          <p>Comments</p>
+        <div fxLlayout="column" (click)="onSort('num_comments')">
+          <button mat-button>Comments</button>
         </div>
-        <div fxLlayout="column" class="post-additional-details clickable" (click)="onSort('score')">
-          <p>Score</p>
+        <div fxLlayout="column" (click)="onSort('score')">
+          <button  mat-button>Score</button>
         </div>
         <div class="spacer">.</div>
       </div>

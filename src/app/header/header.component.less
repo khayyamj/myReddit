@@ -1,28 +1,38 @@
+@grey: #dee0de;
+@circlepixGreen: #8BC843;
+
 .header {
-    position: sticky;
+    position: fixed;
     top: 0px;
     width: 100%;
-    height: 50px;
-    padding-bottom: 10px;
-    background-color: white;
-    .left-side {
-
-    }
-    .right-side {
-
+    height: 60px;
+    margin-bottom: 10px;
+    background-color: @grey;
+    .left-side {}
+    .right-side {}
+    .active-tab{
+        background-color: white;
+        color: @circlepixGreen;
+        outline: none;
     }
     .company-image {
         height: 50px;
     }
+    .header-tab{
+        display: flex;
+        align-items: center;
+        height: 60px;
+        padding: 0 10px;
+    }
     .header-button {
-        width: 50px;
         height: 25px;
         border-radius: 10px;
-        padding: 0 10px;
+        padding: 0 15px 10px 0;
         text-align: center;
         justify-content: center;
     }
     .search-bar {
+        padding: 10px 10px 0 0;
         .search-bar-style {
             border-radius: 5px;
         }

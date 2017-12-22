@@ -1,17 +1,22 @@
 <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
   <div class="left-side" fxLayout="row">
-      <div class="header-button" [routerLink]="['/home']" (click)="onSetPath('home')">Home</div>
-      <div class="header-button" [routerLink]="['/posts']" (click)="onSetPath('posts')">Posts</div>
+      <div class="header-tab" [class.active-tab]="authService.currentRoute === 'home'" [routerLink]="['/home']" (click)="onSetPath('home')">Home</div>
+      <div class="header-tab" [class.active-tab]="authService.currentRoute === 'posts'" [routerLink]="['/posts']" (click)="onSetPath('posts')">Posts</div>
   </div>
 
-  <div *ngIf="currentPath !== 'home'"><img class="company-image" src="../assets/images/circlepix-full-logo.png" /></div>
+  <div *ngIf="shouldShow()"><img class="company-image" src="../assets/images/circlepix-full-logo.png" /></div>
 
   <div class="right-side" fxLayout="row">
-    <div class="search-bar">
+    <div *ngIf="shouldShow()" class="search-bar">
       <form #searchForm="ngForm" (ngSubmit)="onSearch(searchForm)">
-      <input type='text'name="searchTerm" placeholder="Search" class="search-bar-style" (keyup)="onSearch($event)" [(ngModel)]="searchTerm" />
+      <input type='text'name="searchTerm" placeholder="Search Posts" class="search-bar-style" (keyup)="onSearch($event)" [(ngModel)]="searchTerm" />
       </form>
     </div>
-    <div class="header-button" (click)="onLogin()">Login</div>
+    <div *ngIf="!authService.authenticated" class="header-button">
+      <button mat-raised-button type="button" (click)="onLogin()" color="primary">Login</button>
+    </div>
+    <div *ngIf="authService.authenticated" class="header-button">
+      <button mat-raised-button type="button" (click)="onLogout()" color="warn">Logout</button>
+    </div>
   </div>
 </div>

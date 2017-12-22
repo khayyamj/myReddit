@@ -1,9 +1,10 @@
 <div class="login" fxLayout="column" fxLayoutAlign="center center">
-  <h2 (click)="newUser = !newUser">Login / Signup</h2>
+  <h2 *ngIf="!newUser">Login</h2>
+  <h2 *ngIf="newUser">Signup</h2>
   <mat-progress-spinner mode="indeterminate" *ngIf="showSpinner" class="loading-spinner"></mat-progress-spinner>
   <div fxLayout="column" fxLayoutAlign="center center">
     <div>
-      <mat-checkbox [(ngModel)]="newUser">New User</mat-checkbox>
+      <mat-checkbox [(ngModel)]="newUser" color="primary">New User</mat-checkbox>
     </div>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
       <div fxLayout="column">

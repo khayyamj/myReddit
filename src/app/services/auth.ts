@@ -2,6 +2,7 @@ import * as firebase from 'firebase';
 
 export class AuthService {
 	public authenticated = false;
+	public currentRoute = 'home';
 
 	signup(email: string, password: string) {
 		return firebase.auth().createUserWithEmailAndPassword(email, password);
@@ -17,5 +18,9 @@ export class AuthService {
 
 	isLoggedOut() {
 		this.authenticated = false;
+	}
+
+	setCurrentRoute(path: string) {
+		this.currentRoute = path;
 	}
 }

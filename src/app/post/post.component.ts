@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
@@ -6,15 +6,11 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.less']
 })
-export class PostComponent implements OnInit {
+export class PostComponent {
   post: any;
+  
   constructor(private dialogRef: MatDialogRef<PostComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
     this.post = data.post;
-  }
-
-  ngOnInit() {
-    console.log('dialog data: ', this.post);
-
   }
 
   onClose() {

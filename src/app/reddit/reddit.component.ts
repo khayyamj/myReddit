@@ -16,19 +16,22 @@ export class RedditComponent implements OnInit {
   allPosts: any[] = [];
   posts: any[] = [];
   searchTerm: string;
+  loaded = false;
 
   constructor(private postService: PostService,
               public dialog: MatDialog) { }
 
   ngOnInit() {
+    this.loaded = false;
     const observer = {
       next: () => {
         this.allPosts = this.postService.getPosts();
         this.configureDate();
         this.onSort();
+        this.loaded = true;
       },
-      error: (err) => console.error(err),
-      complete: () => null
+      error: (err) => { console.error(err); this.loaded = true; },
+      complete: () => this.loaded = true
     };
     const getPostData = Observable.create((obs) => {
       const checkForPostData = () => {
@@ -64,7 +67,10 @@ export class RedditComponent implements OnInit {
 
   searchPosts(term: string) {
     this.posts = this.allPosts;
-    if (term === '') { return; }
+    if (term === '') {
+      this.onSort();
+      return;
+    }
     this.posts = this.allPosts.filter(post => {
       let containsTerm = false;
       if (post['title'].toLowerCase().indexOf(term.toLowerCase()) > -1) { containsTerm = true; }
@@ -75,15 +81,12 @@ export class RedditComponent implements OnInit {
   }
 
   onSelectPost(index: number) {
-    console.log('selected post #', index);
     const dialogRef = this.dialog.open(PostComponent, {
       width: '450px',
       data: {post: this.posts[index]}
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('the dialog was closed');
-    });
+    dialogRef.afterClosed().subscribe();
   }
 
 }

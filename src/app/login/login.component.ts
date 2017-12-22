@@ -38,11 +38,10 @@ export class LoginComponent implements OnInit {
 
   onSignup(form: NgForm) {
     this.showSpinner = true;
-    console.log('Form:', form.value);
     this.authService.signup(form.value.email, form.value.password)
       .then(() => {
         this.showSpinner = false;
-        alert('Signup successful - please Login now');
+        alert('Signup successful - please click Login now');
         this.newUser = false;
       })
       .catch(err => {
@@ -53,11 +52,9 @@ export class LoginComponent implements OnInit {
 
   onLogin(form: NgForm) {
     this.showSpinner = true;
-    console.log('Form:', form.value);
     this.authService.login(form.value.email, form.value.password)
       .then(() => {
         this.showSpinner = false;
-        alert('Login successful!');
         this.newUser = false;
         this.loginForm.reset();
         this.dialogRef.close(true);
