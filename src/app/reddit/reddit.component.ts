@@ -24,6 +24,7 @@ export class RedditComponent implements OnInit {
     const observer = {
       next: () => {
         this.allPosts = this.postService.getPosts();
+        this.configureDate();
         this.onSort();
       },
       error: (err) => console.error(err),
@@ -46,8 +47,19 @@ export class RedditComponent implements OnInit {
     this.postService.getFilterString().subscribe((term: string) => this.searchPosts(term));
   }
 
+  configureDate() {
+    this.allPosts.map(post => {
+      post.date = new Date(post.created).toString().substring(0, 24);
+    });
+  }
+
   onSort(category: string = 'title') {
-    this.posts = this.allPosts.sort((a, b) => b[category] - a[category]);
+    const postToSort = this.allPosts.slice();
+    if (category === 'title') {
+      this.posts = postToSort.sort((a, b) => a[category].toUpperCase() < b[category].toUpperCase() ? -1 : 1);
+    } else {
+      this.posts = postToSort.sort((a, b) => b[category] - a[category]);
+    }
   }
 
   searchPosts(term: string) {

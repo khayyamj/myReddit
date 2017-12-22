@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink, ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material';
-import { PostService } from '../services/index';
+import { PostService, AuthService } from '../services/index';
 import { LoginComponent } from '../login/login.component';
 
 @Component({
@@ -14,7 +14,8 @@ export class HeaderComponent {
   searchTerm: string;
 
   constructor(private postService: PostService,
-              private dialog: MatDialog) {}
+              private dialog: MatDialog,
+              private authService: AuthService) {}
 
   onSetPath(currentPath: string) {
     this.currentPath = currentPath;
@@ -29,6 +30,8 @@ export class HeaderComponent {
       width: '300px',
     });
 
-    dialogRef.afterClosed().subscribe();
+    dialogRef.afterClosed().subscribe(loginSuccessful => {
+      if (loginSuccessful) { this.authService.isAuthenticated(); }
+    });
   }
 }

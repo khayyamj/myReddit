@@ -17,4 +17,8 @@ export class PostComponent implements OnInit {
 
   }
 
+  onClose() {
+    this.dialogRef.close();
+  }
+
 }

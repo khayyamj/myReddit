@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
-import { MatIconRegistry } from '@angular/material';
+import { MatIconRegistry, MatDialogRef } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 
 import { AuthService } from './../services';
@@ -19,10 +19,11 @@ export class LoginComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private authService: AuthService,
               private iconRegistry: MatIconRegistry,
-              private sanitizer: DomSanitizer) {
+              private sanitizer: DomSanitizer,
+              private dialogRef: MatDialogRef<LoginComponent>) {
     this.loginForm = fb.group({
       'email': [null, Validators.required],
-      'password': [null, Validators.compose([Validators.required, Validators.minLength(8), Validators.maxLength(12)])],
+      'password': [null, Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(12)])],
     });
     iconRegistry.addSvgIcon('visibility', sanitizer.bypassSecurityTrustResourceUrl('../../assets/images/visibility.svg'));
     iconRegistry.addSvgIcon('visibility off', sanitizer.bypassSecurityTrustResourceUrl('../../assets/images/visibility_off.svg'));
@@ -31,8 +32,8 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  onLogin(form: NgForm) {
-    console.log('Form: ', form.value);
+  onSubmit(form: NgForm) {
+    this.newUser ? this.onSignup(form) : this.onLogin(form);
   }
 
   onSignup(form: NgForm) {
@@ -41,12 +42,29 @@ export class LoginComponent implements OnInit {
     this.authService.signup(form.value.email, form.value.password)
       .then(() => {
         this.showSpinner = false;
-        alert('Signup successful - please Login');
+        alert('Signup successful - please Login now');
         this.newUser = false;
       })
       .catch(err => {
-        console.error(err);
-        // this.showSpinner = false;
+        alert(err);
+        this.showSpinner = false;
+      });
+  }
+
+  onLogin(form: NgForm) {
+    this.showSpinner = true;
+    console.log('Form:', form.value);
+    this.authService.login(form.value.email, form.value.password)
+      .then(() => {
+        this.showSpinner = false;
+        alert('Login successful!');
+        this.newUser = false;
+        this.loginForm.reset();
+        this.dialogRef.close(true);
+      })
+      .catch(err => {
+        alert(err);
+        this.showSpinner = false;
       });
   }
 
