@@ -12,6 +12,6 @@
       <input type='text'name="searchTerm" placeholder="Search" class="search-bar-style" (keyup)="onSearch($event)" [(ngModel)]="searchTerm" />
       </form>
     </div>
-    <div class="header-button" [routerLink]="['/login']">Login</div>
+    <div class="header-button" (click)="onLogin()">Login</div>
   </div>
 </div>
